@@ -1,0 +1,11 @@
+# Local environment keys (Never commit real API keys)
+.env
+.env.local
+
+# Python caches
+__pycache__/
+*.pyc
+
+# Local runtime data & caches
+generation_stats.json
+live_free_models_cache.json
