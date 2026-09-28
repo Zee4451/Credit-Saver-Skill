@@ -85,6 +85,12 @@ Instead of uploading a 3,000-line file, extract only what matters:
 python runner.py "Refactor this function to handle errors" --file "src/api.ts" --symbol "fetchUser"
 ```
 
+### 6️⃣ Multi-Agent Swarm Mode (Architect + Developer + QA Team) 🤖👥
+Launches a 3-agent autonomous team to plan, build, and audit code in one command:
+```bash
+python agents.py "Write a complete production-ready authentication modal" --out "AuthModal.tsx"
+```
+
 ---
 
 ## 📊 Live Health & Money Saved Dashboards
