@@ -1,77 +1,139 @@
-# 🚀 OpenRouter Free Models Skill (Credit-Saver Edition)
+# ⚡ Credit-Saver Skill (v2.6)
+### High-Performance, Zero-Cost AI Coding & Deep Reasoning Engine
 
-A high-performance, **100% Free** AI coding skill for Antigravity, Cursor, Windsurf, Claude Code, and Gemini CLI. 
+[![OpenRouter Free Tier](https://img.shields.io/badge/OpenRouter-100%25%20Free%20Tier-success?style=flat-square&logo=openai)](https://openrouter.ai/models?q=:free)
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg?style=flat-square)](LICENSE)
+[![Python 3.8+](https://img.shields.io/badge/Python-3.8+-yellow.svg?style=flat-square&logo=python)](https://python.org)
+[![Antigravity Compatible](https://img.shields.io/badge/Antigravity-Agent%20Ready-purple?style=flat-square)](https://github.com/Zee4451/Credit-Saver-Skill)
 
-This skill connects to OpenRouter's curated **$0.00 `:free` models** (Cohere Code, Nex AGI, Nvidia Nemotron, Poolside Laguna, Gemma 4) with **dual-key instant failover**, **smart context pruning**, and **direct file generation** — saving 80% to 95% of paid AI tokens.
+A production-ready skill designed to eliminate **80%–95% of paid AI token expenses** by routing heavy boilerplate, component generation, refactoring, and critical thinking to **OpenRouter's $0.00 free-tier models**.
 
----
-
-## 🌟 Why Use This?
-- **$0.00 AI Spend**: Never run out of expensive Claude 3.5 Sonnet or GPT-4o credits when generating large components, boilerplate, or CSS styles.
-- **Dual-Key Failover**: If Key 1 hits a temporary 429 rate limit, it instantly switches to Key 2 without interrupting your work.
-- **Smart Context Pruner**: Extracts only relevant TypeScript interfaces or function signatures instead of passing huge files, keeping responses fast and token-efficient.
-- **Clean Code Stripper (`--clean` / `--out`)**: Automatically removes markdown fences (````tsx / ```python) and writes directly into your project files.
-- **Savings Dashboard (`--savings`)**: Live counter showing exact tokens and dollar value saved.
+Built for **Antigravity IDE, Cursor, Windsurf, Claude Code, and Gemini CLI**.
 
 ---
 
-## 📦 Quick Setup for You or a Friend
+## 🌟 Core Features & Four-Pillar Architecture
 
-### Step 1: Requirements
-- Python 3.8+
-- Run:
+```
+┌────────────────────────────────────────────────────────────────────────┐
+│                        CREDIT-SAVER ENGINE                             │
+├─────────────────────┬──────────────────────┬───────────────────────────┤
+│  ⚡ Speed Tier      │  🧠 Deep Reasoning   │  🔄 Dynamic Discovery    │
+│  Gemma 4 MoE (26B)  │  Nemotron Ultra 550B │  Auto-fetches new models  │
+│  North Mini / Fast  │  Nemotron Super 120B │  from OpenRouter API      │
+├─────────────────────┴──────────────────────┴───────────────────────────┤
+│  🚀 Optimizations: Persistent HTTP Session | Live Token Streaming     │
+│  🛡️ Failover: Dual-Key Auto-Switch on 429 | Low-Latency Provider Order │
+└────────────────────────────────────────────────────────────────────────┘
+```
+
+1. **Dual-Tier Speed & Reasoning Architecture:**
+   - **Speed Tier (Everyday Work):** Uses `openrouter/free` and `google/gemma-4-26b-a4b-it:free` (MoE with only 3.8B active params) for instant sub-second Time-To-First-Token.
+   - **Critical Reasoning Tier:** Automatically escalates to flagship **120B to 550B models** (`nvidia/nemotron-3-ultra-550b`, `nvidia/nemotron-3-super-120b`, `google/gemma-4-31b`) when architecture, system trade-offs, or complex logic are detected.
+
+2. **Dynamic Live Auto-Discovery (Zero Manual Updates):**
+   - Automatically queries `https://openrouter.ai/api/v1/models` in the background with a 12-hour local cache.
+   - New free models are discovered and added dynamically; dead/deprecated models are automatically removed.
+
+3. **Persistent HTTP Session & Low-Latency Routing:**
+   - Employs persistent connection pooling (`requests.Session`) to cut TCP/SSL handshake latency.
+   - Prioritizes fast inference providers (`Together`, `DeepInfra`, `Fireworks`, `Chutes`) with seamless automatic fallback (`allow_fallbacks: True`).
+
+4. **Smart Context Pruner (`--file` & `--symbol`):**
+   - Instead of passing 5,000 lines of code, surgically extracts only target function definitions, types, or interfaces.
+
+5. **Direct File Output & Clean Stripper (`--out` and `--clean`):**
+   - Automatically strips markdown backticks (````tsx / ```python) and saves clean, ready-to-run code directly to disk.
+
+6. **Credit Savings Dashboard (`--savings`):**
+   - Live telemetry tracking exact tokens and estimated monetary savings in USD and INR.
+
+---
+
+## 🚀 Quick Start
+
+### 1. Prerequisites
+- Python 3.8+ installed.
+- Install dependencies:
   ```bash
   pip install requests
   ```
 
-### Step 2: (Optional) Set Your Own OpenRouter Keys
-OpenRouter free models only require a free account at [openrouter.ai](https://openrouter.ai). No credit card needed!
-Set in your environment or `.bashrc` / PowerShell profile:
-```powershell
-$env:OPENROUTER_API_KEYS="sk-or-v1-key1,sk-or-v1-key2"
+### 2. Setup API Key (100% Free)
+Get a free API key with zero deposit from [OpenRouter Keys](https://openrouter.ai/keys).
+
+Create a `.env` file in the skill folder:
+```bash
+OPENROUTER_API_KEY="sk-or-v1-your-key-here"
+
+# Or comma-separated for instant dual-key auto-failover:
+# OPENROUTER_API_KEYS="sk-or-v1-key1,sk-or-v1-key2"
 ```
-*(If no keys are provided, the skill has built-in backup free-tier keys ready to go).*
 
 ---
 
-## ⚡ Examples & Usage
+## ⚡ Usage Examples
 
-### 1. Generate a Component Directly to File
+### 1. Universal Smart Router (Recommended)
+Automatically routes to the best live free model with feature filtering:
 ```powershell
-python runner.py "Create a modern animated review card with star ratings in React + CSS Modules" nex --out "src/components/ReviewCard.tsx" --clean
+python runner.py "Build a responsive animated pricing card in React + Tailwind" router
 ```
 
-### 2. Inject Context with Smart Symbol Pruning
+### 2. High-Speed Coding (MoE Speed Tier)
 ```powershell
-python runner.py "Add an edit review modal that uses this interface" --file "src/types/reviews.ts" --symbol "ReviewItem"
+python runner.py "Write a python script to validate and normalize URLs" fast
 ```
 
-### 3. Check Live Key Health & Quotas
+### 3. Critical Thinking & System Architecture (550B Deep Logic)
+```powershell
+python runner.py "Compare Redis vs Memcached architecture trade-offs with lock-free concurrency" reasoning
+```
+
+### 4. Direct File Output with Code Clean
+Writes ready-to-compile code directly to target file without chat preamble or code fences:
+```powershell
+python runner.py "Write a Next.js contact modal with validation" code --out "src/components/ContactModal.tsx" --clean
+```
+
+### 5. Smart Context Pruning (Token Saver)
+Extracts only the target interface/symbol from a large file:
+```powershell
+python runner.py "Refactor this function to handle network retry" --file "src/lib/api.ts" --symbol "fetchUserOrder"
+```
+
+### 6. Provider Routing Override
+```powershell
+python runner.py "Explain event loop in 2 lines" fast --providers "Together,DeepInfra"
+```
+
+### 7. Key Health & Savings Dashboard
 ```powershell
 python runner.py --status
-```
-
-### 4. Check Credits Saved
-```powershell
 python runner.py --savings
 ```
 
 ---
 
-## 🧠 Top Curated Free Models
+## 🎯 Model Routing Matrix
 
-| Alias | Full Model Identifier | Best For |
-| :--- | :--- | :--- |
-| `cohere` / `code` | `cohere/north-mini-code:free` | TypeScript, React, Next.js, Clean production code |
-| `nex` / `nex-pro` | `nex-agi/nex-n2.5-pro:free` | Complex agentic code generation & state logic |
-| `lightning` | `nvidia/nemotron-3.5-lightning:free` | Ultra fast scripts, utilities, regex |
-| `poolside` | `poolside/laguna-s-2.1:free` | 118B coding agent for algorithms and backend |
-| `nemotron-120b` | `nvidia/nemotron-3-super-120b-a12b:free` | Deep reasoning and architectural planning |
-| `ultra` | `nvidia/nemotron-3-ultra-550b-a55b:free` | 550B flagship model for tough bugs |
+| Tier / Category | Recommended Alias | Top Free Models | Scale & Notes |
+| :--- | :--- | :--- | :--- |
+| **Universal Router** | `router`, `free`, `auto` | `openrouter/free` | Smart live router with automatic capability filtering |
+| **Speed / MoE King** | `fast`, `gemma-moe`, `code` | `google/gemma-4-26b-a4b-it:free`<br>`cohere/north-mini-code:free` | 26B MoE (3.8B active params), 256K context, ultra-fast |
+| **Critical Reasoning** | `reasoning`, `critical`, `ultra` | `nvidia/nemotron-3-ultra-550b-a55b:free`<br>`nvidia/nemotron-3-super-120b-a12b:free` | 550B / 120B parameters for deep thinking & complex proofs |
+| **Agentic Coding** | `nex`, `laguna` | `nex-agi/nex-n2.5-pro:free`<br>`poolside/laguna-s-2.1:free` | 118B Coding Agent for complex multi-file components |
+| **Multimodal & Vision** | `gemma`, `ling` | `google/gemma-4-31b-it:free`<br>`inclusionai/ling-3.0-flash-vl:free` | Text, image understanding, and structured outputs |
 
 ---
 
-## 🤝 The "Architect & Worker" Formula
-1. Let your main Assistant (Architect) read your repository, inspect styles, and construct the exact requirements.
-2. Let `openrouter-free` (Worker) generate the heavy code for $0.00.
-3. Let your main Assistant review, compile, and place the code into your repository.
+## 💡 The "Architect & Worker" Paradigm
+
+1. **Architect (Main AI - Gemini/Claude/GPT):** Reads the codebase, determines requirements, and extracts precise type signatures.
+2. **Worker (Credit-Saver Skill):** Generates 300+ line components or heavy boilerplate for **$0.00**.
+3. **Architect (Main AI):** Validates the generated code, runs lint checks, and patches it into the workspace.
+
+---
+
+## 📄 License
+MIT License. Free to use, modify, and distribute.
